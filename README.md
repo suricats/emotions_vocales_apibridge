@@ -1,5 +1,7 @@
 # emotions_vocales_apibridge
 
+[![PyPI - Python Version](https://img.shields.io/badge/python-2.7-blue.svg)](https://docs.python.org/2/whatsnew/2.7.html)
+
 follow http://flask.pocoo.org/docs/1.0/installation/#installation
 
 Create a virtualenv for python
