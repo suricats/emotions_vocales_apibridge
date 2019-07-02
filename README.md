@@ -7,7 +7,9 @@ follow http://flask.pocoo.org/docs/1.0/installation/#installation
 Create a virtualenv for python
 
 Install the dependency indicated in the *requirements.txt* file
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt
+```
 
 Export FLASK_APP environment variable then run the application
 
