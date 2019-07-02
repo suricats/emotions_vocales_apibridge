@@ -4,6 +4,7 @@ from flask_cors import CORS, cross_origin
 from poster.encode import multipart_encode, MultipartParam
 from poster.streaminghttp import register_openers
 import urllib2
+import configenv
 
 app = Flask(__name__)
 
@@ -15,21 +16,16 @@ def analyse():
     wav = request.files['wav'].stream.read()
     api_key = request.form['apikey']
 
-    url="https://api.webempath.net/v2/analyzeWav"
     register_openers()
     items = []
     items.append(MultipartParam('apikey', api_key))
     items.append(MultipartParam('wav', wav))
     datagen, headers = multipart_encode(items)
-    callRequest = urllib2.Request(url, datagen, headers)
+    app.url =  configenv.API_URL
+    callRequest = urllib2.Request(app.url, datagen, headers)
     response = urllib2.urlopen(callRequest)
 
-    if response.getcode() == 200:
-        return(response.read())
-    else:
-        return(response.read())
-
-    return 'Something went wrong'
+    return(response.read())
 
 if __name__ == '__main__':
    app.run(debug=True)
